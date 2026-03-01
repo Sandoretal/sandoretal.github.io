@@ -72,6 +72,18 @@
   .about-left h2 { font-family: 'DM Serif Display', serif; font-size: clamp(1.5rem, 2.5vw, 2.1rem); line-height: 1.25; margin-bottom: 1.25rem; }
   .about-left h2 em { font-style: italic; color: var(--phd-accent); }
   .about-left p { font-size: 0.87rem; line-height: 1.85; color: #3a3732; margin-bottom: 1rem; }
+  .mission-line {
+    display: inline-block;
+    margin-bottom: 1rem;
+    padding: 0.55rem 0.85rem;
+    border-radius: 999px;
+    background: rgba(35, 100, 170, 0.1);
+    border: 1px solid rgba(35, 100, 170, 0.16);
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--phd-accent);
+  }
   .module-callout {
     padding: 1.2rem 1.3rem;
     border-radius: 16px;
@@ -133,6 +145,62 @@
     padding: 3.5rem 5vw;
     border-bottom: 1px solid var(--rule);
     background: linear-gradient(180deg, rgba(255,255,255,0.42), rgba(215,232,251,0.16));
+  }
+  .highlights-section {
+    padding: 3.5rem 5vw;
+    border-bottom: 1px solid var(--rule);
+    background: linear-gradient(180deg, rgba(255,255,255,0.4), rgba(47, 143, 107, 0.08));
+  }
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.2rem;
+  }
+  .highlight-card {
+    background: linear-gradient(135deg, #ffffff, #fff7ef);
+    border: 1px solid var(--rule);
+    border-radius: 18px;
+    padding: 1.2rem;
+    box-shadow: 0 12px 28px rgba(99, 73, 52, 0.08);
+  }
+  .highlight-metric {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem;
+    line-height: 1;
+    margin-bottom: 0.45rem;
+    color: var(--staff-accent);
+  }
+  .highlight-title {
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 0.45rem;
+  }
+  .highlight-desc {
+    font-size: 0.8rem;
+    line-height: 1.7;
+    color: #3a3732;
+  }
+  .workflow-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    margin-top: 0.9rem;
+  }
+  .workflow-step {
+    padding: 0.45rem 0.7rem;
+    border-radius: 999px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    background: rgba(215,232,251,0.7);
+    color: var(--phd-accent);
+  }
+  @media (max-width: 900px) {
+    .highlights-grid { grid-template-columns: 1fr; }
   }
   .research-pillars { display: flex; flex-direction: column; gap: 0.8rem; }
   .pillar {
@@ -366,8 +434,9 @@
   <div class="about-left">
     <div class="section-eyebrow">Our Research</div>
     <h2>Harnessing <em>Big Data</em> to unlock early Parkinson's</h2>
+    <div class="mission-line">Early detection of Parkinson's using real-world digital and biomolecular data</div>
     <p>By the time the hallmark motor symptoms of Parkinson's disease appear — tremors, rigidity, slowness — up to 50% of the dopaminergic neurons essential for movement have already been lost, making effective treatment far harder. Our lab works to change this by detecting the disease years earlier, during its prodromal phase.</p>
-    <p>We combine digital biomarkers from wearables, blood-based molecular signatures, electronic health records from UK Biobank, and large-scale omics datasets with advanced machine learning — including large language models, transfer learning, and graph neural networks — to build a richer, earlier picture of Parkinson's risk and progression. Our long-term goal is to pave the way for neuroprotective treatments that intervene before irreversible neuronal damage occurs.</p>
+    <p>We combine digital biomarkers from wearables, blood-based molecular signatures, electronic health records, and large-scale omics datasets with advanced machine learning — including large language models, transfer learning, and graph neural networks — to build a richer, earlier picture of Parkinson's risk and progression. Our long-term goal is to pave the way for neuroprotective treatments that intervene before irreversible neuronal damage occurs.</p>
   </div>
   <div class="research-pillars">
     <div class="pillar">
@@ -397,6 +466,38 @@
         <div class="pillar-title">Machine Learning &amp; AI</div>
         <div class="pillar-desc">Developing large language models, transfer learning, graph neural networks, and multimodal fusion architectures to integrate heterogeneous biomedical datasets at scale.</div>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- HIGHLIGHTS -->
+<div class="highlights-section">
+  <div class="section-header">
+    <h2>Research Highlights</h2>
+    <div class="divider"></div>
+  </div>
+  <div class="highlights-grid">
+    <div class="highlight-card">
+      <div class="highlight-metric">7 years</div>
+      <div class="highlight-title">Earlier Detection</div>
+      <div class="highlight-desc">Wearable movement data can reveal Parkinson's-related changes years before clinical diagnosis, opening a window for earlier intervention.</div>
+    </div>
+    <div class="highlight-card">
+      <div class="highlight-metric">Multi-modal</div>
+      <div class="highlight-title">Data Integration</div>
+      <div class="highlight-desc">The lab combines smartwatch data, electronic healthcare records, proteomics, transcriptomics, and clinical records to model disease risk and progression.</div>
+      <div class="workflow-strip">
+        <span class="workflow-step">Wearables</span>
+        <span class="workflow-step">EHR</span>
+        <span class="workflow-step">Omics</span>
+        <span class="workflow-step">ML Models</span>
+        <span class="workflow-step">Prediction</span>
+      </div>
+    </div>
+    <div class="highlight-card">
+      <div class="highlight-metric">Translatable</div>
+      <div class="highlight-title">Real-World Impact</div>
+      <div class="highlight-desc">Our work aims to support earlier diagnosis, improve digital outcome measures, and identify repurposable therapies from real-world health data.</div>
     </div>
   </div>
 </div>
