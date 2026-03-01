@@ -7,24 +7,30 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #f5f3ef;
+    --bg: #f7f1e8;
     --ink: #0f0e0c;
-    --mid: #5a5751;
-    --rule: #d4cfc8;
+    --mid: #5d554c;
+    --rule: #dccfbe;
     --white: #ffffff;
-    --phd-accent: #1a3a5c;   --phd-tag: #c8d8ea;
-    --staff-accent: #2e1a5c; --staff-tag: #cfc8ea;
-    --msc-accent: #1a4a35;   --msc-tag: #c8ddd1;
-    --past-accent: #5a4a2a;  --past-tag: #e2d9c8;
+    --hero-wash: radial-gradient(circle at top left, rgba(205, 109, 82, 0.18), transparent 32%), radial-gradient(circle at top right, rgba(55, 114, 173, 0.14), transparent 28%), linear-gradient(180deg, #fbf4eb 0%, #f5efe6 100%);
+    --phd-accent: #2364aa;   --phd-tag: #d7e8fb;
+    --staff-accent: #b44669; --staff-tag: #f6d7e1;
+    --msc-accent: #2f8f6b;   --msc-tag: #d6efe4;
+    --past-accent: #c47a2c;  --past-tag: #f4e1c8;
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
-  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--ink); min-height: 100vh; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--hero-wash);
+    color: var(--ink);
+    min-height: 100vh;
+  }
 
   /* NAV */
   nav {
     position: sticky; top: 0; z-index: 50;
-    background: rgba(245,243,239,0.92); backdrop-filter: blur(8px);
+    background: rgba(251,244,235,0.88); backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--rule);
     display: flex; align-items: center; justify-content: space-between;
     padding: 0.75rem 5vw; gap: 1rem; flex-wrap: wrap;
@@ -43,11 +49,15 @@
   header {
     padding: 4rem 5vw 3rem; border-bottom: 1px solid var(--rule);
     display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; flex-wrap: wrap;
+    background:
+      radial-gradient(circle at 20% 15%, rgba(180, 70, 105, 0.12), transparent 24%),
+      radial-gradient(circle at 80% 25%, rgba(35, 100, 170, 0.12), transparent 22%);
   }
   .lab-wordmark { display: flex; flex-direction: column; gap: 0.3rem; }
   .lab-wordmark .eyebrow { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mid); }
   .lab-wordmark h1 { font-family: 'DM Serif Display', serif; font-size: clamp(2.2rem, 5vw, 3.6rem); line-height: 1; }
   .lab-wordmark h1 em { font-style: italic; color: var(--phd-accent); }
+  .lab-wordmark h1 { color: var(--staff-accent); }
   .lab-meta { font-size: 0.78rem; color: var(--mid); text-align: right; line-height: 1.8; }
   .lab-meta a { color: inherit; }
 
@@ -55,29 +65,89 @@
   .about-section {
     padding: 3.5rem 5vw; border-bottom: 1px solid var(--rule);
     display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: start;
+    background: linear-gradient(180deg, rgba(255,255,255,0.5), rgba(255,255,255,0.2));
   }
   @media (max-width: 720px) { .about-section { grid-template-columns: 1fr; } }
   .section-eyebrow { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mid); margin-bottom: 0.75rem; }
   .about-left h2 { font-family: 'DM Serif Display', serif; font-size: clamp(1.5rem, 2.5vw, 2.1rem); line-height: 1.25; margin-bottom: 1.25rem; }
   .about-left h2 em { font-style: italic; color: var(--phd-accent); }
   .about-left p { font-size: 0.87rem; line-height: 1.85; color: #3a3732; margin-bottom: 1rem; }
+  .module-callout {
+    margin-top: 1.4rem;
+    padding: 1.2rem 1.3rem;
+    border-radius: 16px;
+    border: 1px solid rgba(180, 70, 105, 0.2);
+    background: linear-gradient(135deg, rgba(246,215,225,0.55), rgba(215,232,251,0.45));
+    box-shadow: 0 12px 28px rgba(99, 73, 52, 0.08);
+  }
+  .module-callout h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.05rem;
+    color: var(--staff-accent);
+    margin-bottom: 0.45rem;
+  }
+  .module-meta {
+    font-size: 0.74rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 0.65rem;
+  }
+  .module-callout p {
+    font-size: 0.8rem;
+    line-height: 1.7;
+    margin-bottom: 0.75rem;
+  }
+  .module-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--staff-accent);
+    text-decoration: none;
+    padding: 0.45rem 0.9rem;
+    border-radius: 999px;
+    border: 1px solid rgba(180, 70, 105, 0.25);
+    background: rgba(255,255,255,0.7);
+  }
+  .module-link:hover {
+    background: var(--staff-accent);
+    color: #fff;
+    border-color: var(--staff-accent);
+  }
+  .tutorial-list {
+    list-style: none;
+    display: grid;
+    gap: 0.45rem;
+    margin-bottom: 0.9rem;
+  }
+  .tutorial-list li {
+    font-size: 0.78rem;
+    color: #3a3732;
+    line-height: 1.5;
+  }
   .research-pillars { display: flex; flex-direction: column; gap: 0.8rem; }
   .pillar {
-    background: var(--white); border: 1px solid var(--rule); border-radius: 10px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.98), rgba(250,241,230,0.95)); border: 1px solid var(--rule); border-radius: 14px;
     padding: 0.9rem 1.1rem; display: flex; gap: 0.85rem; align-items: flex-start;
+    box-shadow: 0 10px 24px rgba(140, 102, 66, 0.08);
   }
   .pillar-icon { width: 34px; height: 34px; border-radius: 8px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 1.05rem; }
   .pillar-title { font-size: 0.78rem; font-weight: 600; margin-bottom: 0.2rem; color: var(--ink); }
   .pillar-desc { font-size: 0.72rem; color: var(--mid); line-height: 1.55; }
 
   /* PUBLICATIONS */
-  .pub-section { padding: 3.5rem 5vw; border-bottom: 1px solid var(--rule); }
+  .pub-section { padding: 3.5rem 5vw; border-bottom: 1px solid var(--rule); background: rgba(255,255,255,0.28); }
   .section-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.75rem; }
   .section-header h2 { font-family: 'DM Serif Display', serif; font-size: 1.6rem; font-weight: 400; white-space: nowrap; }
   .section-header .divider { flex: 1; height: 1px; background: var(--rule); }
   .pub-list { display: flex; flex-direction: column; gap: 1rem; }
   .pub-card {
-    background: var(--white); border: 1px solid var(--rule); border-radius: 12px;
+    background: linear-gradient(135deg, #ffffff, #fff8ef); border: 1px solid var(--rule); border-radius: 14px;
     padding: 1.2rem 1.4rem; display: grid; grid-template-columns: 3.5rem 1fr auto;
     gap: 1.2rem; align-items: center;
     transition: box-shadow 0.2s, transform 0.2s;
@@ -100,9 +170,10 @@
   .legend {
     display: flex; gap: 1.2rem; padding: 1rem 5vw; border-bottom: 1px solid var(--rule);
     flex-wrap: wrap; align-items: center;
+    background: rgba(255,255,255,0.45);
   }
   .legend-label { font-size: 0.65rem; letter-spacing: 0.14em; font-weight: 700; text-transform: uppercase; color: var(--mid); margin-right: 0.3rem; }
-  .legend-item { display: flex; align-items: center; gap: 0.45rem; font-size: 0.73rem; color: var(--mid); padding: 0.3rem 0.7rem; border-radius: 2rem; }
+  .legend-item { display: flex; align-items: center; gap: 0.45rem; font-size: 0.73rem; color: var(--mid); padding: 0.3rem 0.7rem; border-radius: 2rem; background: rgba(255,255,255,0.72); border: 1px solid rgba(220,207,190,0.7); }
   .dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
   .dot-staff { background: var(--staff-accent); }
   .dot-phd   { background: var(--phd-accent); }
@@ -111,6 +182,10 @@
 
   /* TEAM SECTIONS */
   .section { padding: 3rem 5vw 0; }
+  .staff-section { background: linear-gradient(180deg, rgba(246,215,225,0.35), transparent 45%); }
+  .phd-section { background: linear-gradient(180deg, rgba(215,232,251,0.4), transparent 45%); }
+  .msc-section { background: linear-gradient(180deg, rgba(214,239,228,0.38), transparent 45%); }
+  .past-section { background: linear-gradient(180deg, rgba(244,225,200,0.45), transparent 45%); }
   .section-heading { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
   .section-heading h2 { font-family: 'DM Serif Display', serif; font-size: 1.05rem; font-weight: 400; white-space: nowrap; }
   .section-heading .count { font-size: 0.7rem; font-weight: 700; padding: 0.2rem 0.55rem; border-radius: 2rem; letter-spacing: 0.05em; }
@@ -125,20 +200,20 @@
 
   /* CARD */
   .card {
-    background: var(--white); border: 1px solid var(--rule); border-radius: 12px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,249,242,0.98)); border: 1px solid var(--rule); border-radius: 16px;
     cursor: pointer; overflow: hidden; transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
-  .card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
-  .card-bar { height: 4px; width: 100%; }
+  .card:hover { transform: translateY(-6px); box-shadow: 0 18px 36px rgba(0,0,0,0.12); }
+  .card-bar { height: 8px; width: 100%; }
   .staff-section .card-bar { background: var(--staff-accent); }
   .phd-section   .card-bar { background: var(--phd-accent); }
   .msc-section   .card-bar { background: var(--msc-accent); }
   .past-section  .card-bar { background: var(--past-accent); }
-  .card-photo { width: 100%; aspect-ratio: 1; background: #e8e5e0; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .card-photo { width: 100%; aspect-ratio: 1; background: linear-gradient(135deg, #f2dfd3, #d9e7f6); display: flex; align-items: center; justify-content: center; overflow: hidden; }
   .card-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .past-section .card { opacity: 0.82; }
   .past-section .card-photo { filter: grayscale(25%); }
-  .photo-placeholder { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; opacity: 0.3; }
+  .photo-placeholder { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; opacity: 0.6; color: rgba(15,14,12,0.5); }
   .photo-placeholder svg { width: 38px; height: 38px; }
   .photo-placeholder span { font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; }
   .card-body { padding: 0.85rem 1rem 1rem; }
@@ -159,7 +234,7 @@
   }
   .overlay.open { opacity: 1; pointer-events: all; }
   .modal {
-    background: var(--white); border-radius: 16px; max-width: 560px; width: 100%; overflow: hidden;
+    background: linear-gradient(180deg, #fffefe, #fff7ef); border-radius: 16px; max-width: 560px; width: 100%; overflow: hidden;
     transform: translateY(24px) scale(0.97); transition: transform 0.25s ease;
     box-shadow: 0 32px 80px rgba(0,0,0,0.18);
   }
@@ -183,7 +258,7 @@
   .btn-close:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
 
   /* FOOTER */
-  footer { margin-top: 2rem; border-top: 1px solid var(--rule); padding: 1.5rem 5vw; font-size: 0.72rem; color: var(--mid); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
+  footer { margin-top: 2rem; border-top: 1px solid var(--rule); padding: 1.5rem 5vw; font-size: 0.72rem; color: var(--mid); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; background: rgba(255,255,255,0.35); }
 
   @media (max-width: 500px) { .modal-body { flex-direction: column; } }
 </style>
@@ -221,6 +296,19 @@
     <h2>Harnessing <em>Big Data</em> to unlock early Parkinson's</h2>
     <p>By the time the hallmark motor symptoms of Parkinson's disease appear — tremors, rigidity, slowness — up to 50% of the dopaminergic neurons essential for movement have already been lost, making effective treatment far harder. Our lab works to change this by detecting the disease years earlier, during its prodromal phase.</p>
     <p>We combine digital biomarkers from wearables, blood-based molecular signatures, electronic health records from UK Biobank, and large-scale omics datasets with advanced machine learning — including large language models, transfer learning, and graph neural networks — to build a richer, earlier picture of Parkinson's risk and progression. Our long-term goal is to pave the way for neuroprotective treatments that intervene before irreversible neuronal damage occurs.</p>
+    <div class="module-callout">
+      <h3>Real-world Data Coding for Neuroscientists (ReCoN)</h3>
+      <div class="module-meta">MSc in Translational Neuroscience · Department of Brain Sciences, Faculty of Medicine · Imperial College London · Autumn 2025</div>
+      <p>The group is also leading ReCoN as part of Module 3, <strong>Digital Health Data Science Foundation</strong>.</p>
+      <p>🧩 Tutorials Overview</p>
+      <ul class="tutorial-list">
+        <li>Tutorial 1: Introduction to Python</li>
+        <li>Tutorial 2: Statistics and Electronic Healthcare Records</li>
+        <li>Tutorial 3: Time Series Data Feature Engineering</li>
+        <li>Tutorial 4: Introduction to Machine Learning</li>
+      </ul>
+      <a class="module-link" href="https://sandoretal.github.io/Module_3/" target="_blank" rel="noopener noreferrer">View RECON Module</a>
+    </div>
   </div>
   <div class="research-pillars">
     <div class="pillar">
