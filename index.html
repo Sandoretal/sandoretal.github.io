@@ -237,6 +237,48 @@
   }
   .pub-link:hover { background: var(--phd-accent); color: #fff; border-color: var(--phd-accent); }
   @media (max-width: 600px) { .pub-card { grid-template-columns: 1fr; gap: 0.5rem; } }
+  .pub-feature {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(220, 207, 190, 0.9);
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 1rem;
+    align-items: start;
+  }
+  .pub-feature img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+    border: 1px solid var(--rule);
+    box-shadow: 0 10px 24px rgba(99, 73, 52, 0.12);
+  }
+  .pub-feature-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .pub-badge {
+    display: inline-flex;
+    width: fit-content;
+    padding: 0.28rem 0.6rem;
+    border-radius: 999px;
+    background: var(--staff-tag);
+    color: var(--staff-accent);
+    font-size: 0.64rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+  }
+  .pub-feature-copy p {
+    font-size: 0.78rem;
+    line-height: 1.7;
+    color: #3a3732;
+  }
+  @media (max-width: 640px) {
+    .pub-feature { grid-template-columns: 1fr; }
+  }
 
   /* OUTREACH */
   .outreach-section {
@@ -564,6 +606,14 @@
         <div class="pub-title">Wearables-derived risk score for unintrusive detection of α-synuclein aggregation or dopaminergic deficit</div>
         <div class="pub-authors">Ann-Kathrin Schalkamp, Kathryn J. Peall, Neil A. Harrison, Valentina Escott-Price, Payam Barnaghi, Cynthia Sandor</div>
         <span class="pub-journal">EBioMedicine · July 2025</span>
+        <div class="pub-feature">
+          <img src="ebio-cover.png" alt="July 2025 EBioMedicine cover">
+          <div class="pub-feature-copy">
+            <span class="pub-badge">Journal Cover</span>
+            <p><strong>Featured on the July 2025 The Lancet EBioMedicine cover</strong></p>
+            <p>This study was selected for the journal cover, highlighting our work on wearables-derived risk scores for early Parkinson's detection.</p>
+          </div>
+        </div>
       </div>
       <a class="pub-link" href="https://doi.org/10.1016/j.ebiom.2025.105782" target="_blank">DOI →</a>
     </div>
