@@ -288,7 +288,7 @@
   }
   .outreach-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1.4rem;
   }
   .outreach-card {
@@ -403,6 +403,7 @@
     text-align: center;
   }
   @media (max-width: 900px) {
+    .outreach-grid { grid-template-columns: 1fr; }
     .outreach-media-grid { grid-template-columns: repeat(3, 1fr); }
     .outreach-media-stack { grid-template-columns: 1fr; }
   }
@@ -854,6 +855,16 @@
         <div class="outreach-kicker">Education</div>
         <div class="outreach-title">Outreach at Schools</div>
         <div class="outreach-desc">We also contribute to outreach at schools, introducing students to neuroscience, real-world health data, and the role of coding and machine learning in biomedical research.</div>
+      </div>
+    </div>
+    <div class="outreach-card mentoring-card">
+      <div class="outreach-image">
+        <img src="CIE_mentoring.jpeg" alt="Mentoring in the Confronting Inequality in Education initiative" style="width:100%;height:100%;object-fit:cover;display:block;">
+      </div>
+      <div class="outreach-body">
+        <div class="outreach-kicker">Mentoring</div>
+        <div class="outreach-title">Confronting Inequality in Education</div>
+        <div class="outreach-desc">We also contribute mentoring through the Confronting Inequality in Education initiative, supporting students through sustained academic engagement and widening participation activities.</div>
       </div>
     </div>
   </div>
