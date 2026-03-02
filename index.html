@@ -323,6 +323,94 @@
     object-fit: cover;
     display: block;
     border-radius: 12px;
+    cursor: zoom-in;
+  }
+  .outreach-media-stack {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 260px;
+    gap: 0.5rem;
+    padding: 0.35rem;
+    align-items: start;
+  }
+  .outreach-media-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.35rem;
+  }
+  .outreach-media-grid img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+    border-radius: 12px;
+    cursor: zoom-in;
+  }
+  .outreach-video {
+    width: 100%;
+    display: block;
+    border-radius: 12px;
+    background: #000;
+    object-fit: cover;
+  }
+  .outreach-video-wrap {
+    width: 100%;
+  }
+  .outreach-video-carousel {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 0.45rem;
+    align-items: center;
+  }
+  .outreach-video-frame {
+    background: rgba(255,255,255,0.88);
+    border: 1px solid rgba(35, 100, 170, 0.16);
+    border-radius: 16px;
+    padding: 0.35rem;
+  }
+  .outreach-video-panel {
+    display: none;
+  }
+  .outreach-video-panel.active {
+    display: block;
+  }
+  .outreach-video-panel.landscape .outreach-video {
+    aspect-ratio: 4 / 5;
+  }
+  .outreach-video-panel.portrait .outreach-video {
+    aspect-ratio: 3 / 4;
+    max-width: 180px;
+    margin: 0 auto;
+  }
+  .outreach-video-nav {
+    width: 36px;
+    height: 36px;
+    border: 1px solid rgba(35, 100, 170, 0.18);
+    border-radius: 999px;
+    background: rgba(255,255,255,0.92);
+    color: var(--phd-accent);
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    line-height: 1;
+  }
+  .outreach-video-label {
+    margin-top: 0.35rem;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--mid);
+    text-align: center;
+  }
+  @media (max-width: 900px) {
+    .outreach-media-grid { grid-template-columns: repeat(3, 1fr); }
+    .outreach-media-stack { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    .outreach-media-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 480px) {
+    .outreach-media-grid { grid-template-columns: 1fr; }
   }
   .outreach-body {
     padding: 1.15rem 1.2rem 1.3rem;
@@ -437,6 +525,72 @@
     cursor: pointer; color: var(--mid); transition: background 0.15s, color 0.15s, border-color 0.15s;
   }
   .btn-close:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
+  .image-lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(15,14,12,0.82);
+    backdrop-filter: blur(6px);
+    z-index: 110;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+  }
+  .image-lightbox.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+  .lightbox-inner {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 1rem;
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+  }
+  .lightbox-frame {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.16);
+    border-radius: 20px;
+    padding: 1rem;
+    text-align: center;
+  }
+  .lightbox-frame img {
+    max-width: 100%;
+    max-height: 78vh;
+    width: auto;
+    height: auto;
+    display: inline-block;
+    border-radius: 14px;
+  }
+  .lightbox-nav,
+  .lightbox-close {
+    width: 44px;
+    height: 44px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.18);
+    background: rgba(255,255,255,0.12);
+    color: #fff;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+  .lightbox-close {
+    position: absolute;
+    top: -0.5rem;
+    right: -0.5rem;
+  }
+  @media (max-width: 700px) {
+    .lightbox-inner {
+      grid-template-columns: 1fr;
+    }
+    .lightbox-nav {
+      display: none;
+    }
+  }
 
   /* FOOTER */
   footer { margin-top: 2rem; border-top: 1px solid var(--rule); padding: 1.5rem 5vw; font-size: 0.72rem; color: var(--mid); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; background: rgba(255,255,255,0.35); }
@@ -651,11 +805,38 @@
   <div class="outreach-grid">
     <div class="outreach-card">
       <div class="outreach-image">
-        <div class="photo-placeholder">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <rect x="3" y="5" width="18" height="14" rx="2"/><path d="M8 13l2.5-2.5L14 14l2-2 3 3"/>
-          </svg>
-          <span>Image space</span>
+        <div class="outreach-media-stack">
+          <div class="outreach-media-grid">
+            <img src="GERF/IMG_1826.jpg" alt="Great Exhibition Road Festival audience activity">
+            <img src="GERF/IMG_9389.jpg" alt="Great Exhibition Road Festival outreach activity">
+            <img src="GERF/IMG_1827.jpg" alt="Great Exhibition Road Festival event scene">
+            <img src="GERF/IMG_1847.jpg" alt="Great Exhibition Road Festival display">
+            <img src="GERF/dccff22d-f935-4d6f-9184-8b08bdb5c0a4.JPG" alt="Great Exhibition Road Festival public engagement">
+            <img src="GERF/IMG_1829.jpg" alt="Great Exhibition Road Festival stand">
+            <img src="GERF/IMG_1860.jpg" alt="Great Exhibition Road Festival visitors">
+            <img src="GERF/IMG_1853.jpg" alt="Great Exhibition Road Festival interaction">
+            <img src="GERF/IMG_1861.jpg" alt="Great Exhibition Road Festival activity table">
+          </div>
+          <div class="outreach-video-wrap">
+            <div class="outreach-video-carousel">
+              <button class="outreach-video-nav" type="button" data-carousel-target="gerf-videos" data-direction="-1" aria-label="Previous festival video">‹</button>
+              <div class="outreach-video-frame">
+                <div class="outreach-video-panel landscape active" data-carousel-id="gerf-videos">
+                  <video class="outreach-video" controls preload="metadata" playsinline muted data-max-duration="8">
+                    <source src="GERF/IMG_1983.MOV" type="video/mp4">
+                  </video>
+                  <div class="outreach-video-label">Festival clip 1</div>
+                </div>
+                <div class="outreach-video-panel portrait" data-carousel-id="gerf-videos">
+                  <video class="outreach-video" controls preload="metadata" playsinline muted data-max-duration="8">
+                    <source src="GERF/IMG_1843.MOV" type="video/mp4">
+                  </video>
+                  <div class="outreach-video-label">Festival clip 2</div>
+                </div>
+              </div>
+              <button class="outreach-video-nav" type="button" data-carousel-target="gerf-videos" data-direction="1" aria-label="Next festival video">›</button>
+            </div>
+          </div>
         </div>
       </div>
       <div class="outreach-body">
@@ -675,6 +856,17 @@
         <div class="outreach-desc">We also contribute to outreach at schools, introducing students to neuroscience, real-world health data, and the role of coding and machine learning in biomedical research.</div>
       </div>
     </div>
+  </div>
+</div>
+
+<div class="image-lightbox" id="image-lightbox" role="dialog" aria-modal="true">
+  <div class="lightbox-inner">
+    <button class="lightbox-nav" id="lightbox-prev" type="button" aria-label="Previous image">‹</button>
+    <div class="lightbox-frame">
+      <button class="lightbox-close" id="lightbox-close" type="button" aria-label="Close image viewer">×</button>
+      <img id="lightbox-image" src="" alt="">
+    </div>
+    <button class="lightbox-nav" id="lightbox-next" type="button" aria-label="Next image">›</button>
   </div>
 </div>
 
@@ -842,6 +1034,74 @@ const modalRole = document.getElementById('modal-role');
 const modalDesc = document.getElementById('modal-desc');
 const modalTags = document.getElementById('modal-tags');
 const modalPhoto= document.getElementById('modal-photo');
+const imageLightbox = document.getElementById('image-lightbox');
+const lightboxImage = document.getElementById('lightbox-image');
+const lightboxPrev = document.getElementById('lightbox-prev');
+const lightboxNext = document.getElementById('lightbox-next');
+const lightboxClose = document.getElementById('lightbox-close');
+const outreachVideos = document.querySelectorAll('.outreach-video[data-max-duration]');
+const videoCarouselButtons = document.querySelectorAll('[data-carousel-target]');
+const galleryImages = Array.from(document.querySelectorAll('.outreach-media-grid img, .outreach-image.has-gallery img'));
+let lightboxIndex = 0;
+
+outreachVideos.forEach(video => {
+  const maxDuration = Number(video.dataset.maxDuration || 0);
+  video.addEventListener('timeupdate', () => {
+    if (maxDuration > 0 && video.currentTime >= maxDuration) {
+      video.pause();
+      video.currentTime = 0;
+    }
+  });
+});
+
+videoCarouselButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const carouselId = button.dataset.carouselTarget;
+    const direction = Number(button.dataset.direction || 1);
+    const panels = Array.from(document.querySelectorAll(`[data-carousel-id="${carouselId}"]`));
+    const currentIndex = panels.findIndex(panel => panel.classList.contains('active'));
+    const nextIndex = (currentIndex + direction + panels.length) % panels.length;
+
+    panels.forEach((panel, index) => {
+      const video = panel.querySelector('video');
+      if (video) {
+        video.pause();
+        video.currentTime = 0;
+      }
+      panel.classList.toggle('active', index === nextIndex);
+    });
+  });
+});
+
+function showLightbox(index) {
+  lightboxIndex = index;
+  const img = galleryImages[lightboxIndex];
+  lightboxImage.src = img.src;
+  lightboxImage.alt = img.alt;
+  imageLightbox.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  imageLightbox.classList.remove('open');
+  if (!overlay.classList.contains('open')) document.body.style.overflow = '';
+}
+
+function stepLightbox(direction) {
+  lightboxIndex = (lightboxIndex + direction + galleryImages.length) % galleryImages.length;
+  const img = galleryImages[lightboxIndex];
+  lightboxImage.src = img.src;
+  lightboxImage.alt = img.alt;
+}
+
+galleryImages.forEach((img, index) => {
+  img.addEventListener('click', () => showLightbox(index));
+});
+
+lightboxPrev.addEventListener('click', () => stepLightbox(-1));
+lightboxNext.addEventListener('click', () => stepLightbox(1));
+lightboxClose.addEventListener('click', closeLightbox);
+imageLightbox.addEventListener('click', e => { if (e.target === imageLightbox) closeLightbox(); });
 
 function openModal(type, i) {
   const p = people[type][i], s = typeStyle[type], accent = accentStyle(type, p);
@@ -860,7 +1120,14 @@ function closeModal() { overlay.classList.remove('open'); document.body.style.ov
 
 document.getElementById('btn-close').addEventListener('click', closeModal);
 overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    closeModal();
+    closeLightbox();
+  }
+  if (imageLightbox.classList.contains('open') && e.key === 'ArrowLeft') stepLightbox(-1);
+  if (imageLightbox.classList.contains('open') && e.key === 'ArrowRight') stepLightbox(1);
+});
 </script>
 </body>
 </html>
