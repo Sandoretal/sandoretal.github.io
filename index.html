@@ -17,14 +17,153 @@
     --staff-accent: #b44669; --staff-tag: #f6d7e1;
     --msc-accent: #2f8f6b;   --msc-tag: #d6efe4;
     --past-accent: #c47a2c;  --past-tag: #f4e1c8;
+    --line: rgba(16, 35, 33, 0.12);
+    --muted: #4f655f;
+    --coral: #ef5b3f;
+    --teal: #007f7a;
+    --gold: #f2b134;
+    --navy: #153e75;
+    --berry: #c03678;
+    --user-zoom: 1;
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
   body {
     font-family: 'DM Sans', sans-serif;
+    font-size: calc(16px * var(--user-zoom));
     background: var(--hero-wash);
     color: var(--ink);
     min-height: 100vh;
+  }
+  body.colorblind-friendly,
+  body.colorblind-friendly.theme-katarzyna,
+  body.colorblind-friendly.theme-anastasia,
+  body.colorblind-friendly.theme-cecilia,
+  body.colorblind-friendly.theme-marirena {
+    --coral: #d55e00;
+    --teal: #0072b2;
+    --gold: #f0e442;
+    --navy: #1f1f1f;
+    --berry: #009e73;
+    --muted: #31413d;
+    background:
+      radial-gradient(circle at 0% 0%, rgba(213, 94, 0, 0.18), transparent 28%),
+      radial-gradient(circle at 100% 0%, rgba(0, 114, 178, 0.18), transparent 24%),
+      radial-gradient(circle at 50% 100%, rgba(240, 228, 66, 0.18), transparent 30%),
+      linear-gradient(180deg, #f6f4d2 0%, #eef6ff 48%, #faf9f2 100%);
+  }
+  body.high-contrast,
+  body.high-contrast.theme-katarzyna,
+  body.high-contrast.theme-anastasia,
+  body.high-contrast.theme-cecilia,
+  body.high-contrast.theme-marirena,
+  body.high-contrast.colorblind-friendly,
+  body.high-contrast.colorblind-friendly.theme-katarzyna,
+  body.high-contrast.colorblind-friendly.theme-anastasia,
+  body.high-contrast.colorblind-friendly.theme-cecilia,
+  body.high-contrast.colorblind-friendly.theme-marirena {
+    --surface: #ffffff;
+    --surface-strong: #ffffff;
+    --ink: #000000;
+    --muted: #111111;
+    --line: rgba(0, 0, 0, 0.55);
+    --coral: #000000;
+    --teal: #003cff;
+    --gold: #ffd400;
+    --navy: #000000;
+    --berry: #003cff;
+    background: linear-gradient(180deg, #ffffff 0%, #f2f2f2 100%);
+  }
+  .accessibility-toolbar {
+    position: fixed;
+    right: 24px;
+    top: 46px;
+    left: auto;
+    transform: none;
+    z-index: 20;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 4px;
+    width: auto;
+    max-width: calc(100vw - 48px);
+    padding: 6px 8px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.94);
+    border: 2px solid var(--line);
+    box-shadow: 0 14px 30px rgba(16, 35, 33, 0.14);
+    backdrop-filter: blur(10px);
+    overflow: visible;
+  }
+  .toolbar-controls {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .accessibility-toolbar.is-collapsed {
+    padding: 5px;
+  }
+  .accessibility-toolbar.is-collapsed .toolbar-controls {
+    display: none;
+  }
+  .toolbar-toggle {
+    min-width: 30px;
+    text-align: center;
+  }
+  .toolbar-button {
+    appearance: none;
+    border: 2px solid var(--line);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(248, 243, 233, 0.94));
+    color: var(--ink);
+    border-radius: 9px;
+    padding: 5px 7px;
+    font: inherit;
+    font-size: 0.74rem;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    line-height: 1;
+  }
+  .toolbar-button:hover,
+  .toolbar-button:focus-visible {
+    outline: none;
+    background: linear-gradient(135deg, rgba(240, 228, 66, 0.3), rgba(0, 114, 178, 0.12));
+  }
+  .shortcut-panel {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    width: min(320px, 90vw);
+    padding: 12px 14px;
+    border-radius: 14px;
+    border: 2px solid var(--line);
+    background: rgba(255, 255, 255, 0.98);
+    color: var(--ink);
+    box-shadow: 0 14px 30px rgba(16, 35, 33, 0.16);
+  }
+  .shortcut-panel strong {
+    display: block;
+    margin-bottom: 8px;
+  }
+  .shortcut-panel ul {
+    margin: 0;
+    padding-left: 18px;
+  }
+  .shortcut-panel li {
+    margin: 4px 0;
+    color: var(--ink);
+  }
+  kbd {
+    display: inline-block;
+    min-width: 1.6em;
+    padding: 2px 6px;
+    border-radius: 6px;
+    border: 1px solid var(--line);
+    background: #f3f3f3;
+    font: inherit;
+    font-weight: 700;
+    color: var(--ink);
+    text-align: center;
   }
 
   /* NAV */
@@ -597,6 +736,18 @@
   footer { margin-top: 2rem; border-top: 1px solid var(--rule); padding: 1.5rem 5vw; font-size: 0.72rem; color: var(--mid); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; background: rgba(255,255,255,0.35); }
 
   @media (max-width: 500px) { .modal-body { flex-direction: column; } }
+  @media (max-width: 700px) {
+    .accessibility-toolbar {
+      right: 10px;
+      left: auto;
+      top: 38px;
+      transform: none;
+      max-width: calc(100vw - 20px);
+    }
+    .toolbar-toggle {
+      min-width: 28px;
+    }
+  }
 </style>
 </head>
 <body>
@@ -961,7 +1112,7 @@ const people = {
     },
     {
       name: "Zeinab Ben Halim", role: "Student", photo: null,
-      desc: "Zeinab is working on a student project in the Sandor Lab, applying data science approaches to explore biomarker datasets relevant to Parkinson's disease detection.",
+      desc: "Zeinab is investigating immune cell changes in Parkinson's disease using single-cell RNA sequencing data from the blood. Utilising publicly available datasets, she is benchmarking integration methods and exploring deep learning tools for cell type annotation, working towards creating reproducible pipelines that will later be applied to prodromal Parkinson's (RBD) data to uncover biomarkers for early disease detection.",
       tags: ["Student Project", "Data Science", "Biomarkers"]
     }
   ],
@@ -1140,5 +1291,6 @@ document.addEventListener('keydown', e => {
   if (imageLightbox.classList.contains('open') && e.key === 'ArrowRight') stepLightbox(1);
 });
 </script>
+<script src="site.js"></script>
 </body>
 </html>
